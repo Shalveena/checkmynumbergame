@@ -3,7 +3,6 @@
 // DOM elements ////////////////////////////////////
 const secretNumDisplay = document.querySelector(".number");
 const checkBtn = document.querySelector(".check");
-const scoreDisplay = document.querySelector(".score");
 const highscoreDisplay = document.querySelector(".highscore");
 const againBtn = document.querySelector(".again");
 
@@ -24,6 +23,11 @@ const updateMsg = (message) => {
   document.querySelector(".message").textContent = message;
 };
 
+// function to change the score that is displayed
+const updateScoreDisplay = (newScore) => {
+  document.querySelector(".score").textContent = newScore;
+};
+
 // Check Button Clicked //////////////////////////////////////
 
 // Listen for "Check!" button click
@@ -41,7 +45,7 @@ checkBtn.addEventListener("click", function () {
   } else if (numInput === secretNum) {
     console.log(typeof numInput, numInput);
     updateMsg("🎉 You won!");
-    scoreDisplay.textContent = score;
+    updateScoreDisplay(score);
     document.querySelector("body").style.backgroundColor = "#60b347";
     secretNumDisplay.style.width = "30rem";
     secretNumDisplay.textContent = secretNum;
@@ -57,10 +61,10 @@ checkBtn.addEventListener("click", function () {
     if (score > 1) {
       updateMsg(numInput > secretNum ? "👇Too high!" : "👆 Too low!");
       score--;
-      scoreDisplay.textContent = score;
+      updateScoreDisplay(score);
     } else {
       updateMsg("☹ You lost!");
-      scoreDisplay.textContent = 0;
+      updateScoreDisplay("0");
     }
   }
 });
@@ -69,7 +73,7 @@ checkBtn.addEventListener("click", function () {
 
 againBtn.addEventListener("click", function () {
   score = 20;
-  scoreDisplay.textContent = score;
+  updateScoreDisplay(score);
   secretNumDisplay.style.width = "15rem";
   secretNumDisplay.textContent = "?";
   document.querySelector("body").style.backgroundColor = "#222";
