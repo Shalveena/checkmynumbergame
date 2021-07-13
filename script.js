@@ -42,6 +42,9 @@ checkBtn.addEventListener("click", function () {
     console.log(typeof numInput, numInput);
     updateMsg("🎉 You won!");
     scoreDisplay.textContent = score;
+    document.querySelector("body").style.backgroundColor = "#60b347";
+    secretNumDisplay.style.width = "30rem";
+    secretNumDisplay.textContent = secretNum;
     // change highscore
     if (highscore < score) {
       highscore = score;
@@ -67,7 +70,9 @@ checkBtn.addEventListener("click", function () {
 againBtn.addEventListener("click", function () {
   score = 20;
   scoreDisplay.textContent = score;
+  secretNumDisplay.style.width = "15rem";
   secretNumDisplay.textContent = "?";
+  document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".guess").value = "";
   updateMsg("Start guessing...");
   secretNum = Math.trunc(Math.random() * 20) + 1;
