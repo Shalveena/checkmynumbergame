@@ -5,6 +5,7 @@ const secretNumDisplay = document.querySelector(".number");
 const checkBtn = document.querySelector(".check");
 const scoreDisplay = document.querySelector(".score");
 const highscoreDisplay = document.querySelector(".highscore");
+const againBtn = document.querySelector(".again");
 
 // Global variables ///////////////////////////////
 
@@ -42,10 +43,10 @@ checkBtn.addEventListener("click", function () {
     updateMsg("🎉 You won!");
     scoreDisplay.textContent = score;
     // change highscore
-    // if (highscore < score) {
-    //   highscore = score;
-    //   highscoreDisplay.textContent = highscore;
-    // }
+    if (highscore < score) {
+      highscore = score;
+      highscoreDisplay.textContent = highscore;
+    }
 
     // If the numInput is higher than secretNum, display msg "Too high!"
     // If it is lower than secretNum, display "Too low!"
@@ -59,4 +60,16 @@ checkBtn.addEventListener("click", function () {
       scoreDisplay.textContent = 0;
     }
   }
+});
+
+// Again Button Clicked ///////////////////////////////////
+
+againBtn.addEventListener("click", function () {
+  score = 20;
+  scoreDisplay.textContent = score;
+  secretNumDisplay.textContent = "?";
+  document.querySelector(".guess").value = "";
+  updateMsg("Start guessing...");
+  secretNum = Math.trunc(Math.random() * 20) + 1;
+  console.log(secretNum);
 });
