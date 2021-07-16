@@ -10,7 +10,6 @@ const againBtn = document.querySelector(".again");
 
 // generate random number
 let secretNum = Math.trunc(Math.random() * 20) + 1;
-console.log(secretNum);
 
 // declare and define score and highscore variables
 let score = 20;
